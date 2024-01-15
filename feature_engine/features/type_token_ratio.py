@@ -5,7 +5,7 @@ Defines a feature that outputs the word type-token ratio.
 """
 
 from features.word_count import *
-  
+
 """
 function: get_word_TTR
 @param text: The message for which we are calculating the word type-token ratio.
@@ -17,4 +17,9 @@ def get_word_TTR(text):
 	'''
 	@TODO : Add your Implementation of the feature here! Good Luck :)
 	'''
+	total_words = count_words(text)
+	unique_words = set(text.split())
+	if total_words > 0 :
+		return len(unique_words) / total_words
+
 	return 0

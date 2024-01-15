@@ -11,6 +11,7 @@ The steps needed to add a feature would be to:
 - Call the feature defining function in the driver function.
 """
 import pandas as pd
+import re
 # Importing features
 from features.politeness_features import *
 from features.word_count import *
@@ -64,4 +65,11 @@ class ChatLevelFeaturesCalculator:
         @TODO: Call your get_politeness_strategies() function here! 
         P.S.: Don't forget to appropriately process your output!
         '''
-        pass
+        # calls the function
+        results_dict = self.chat_data["message"].apply(get_politeness_strategies)
+        results_df = pd.DataFrame(results_dict.tolist())
+        # uses 're' to clean up column names
+        results_df = results_df.rename(columns=lambda x: re.sub(r'feature_politeness_==', '', x))
+        results_df = results_df.rename(columns=lambda x: re.sub('==', '', x))
+        # concatenate transformed dataframe with the original dataframe
+        self.chat_data = pd.concat([self.chat_data, results_df], axis=1)

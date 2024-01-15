@@ -15,4 +15,4 @@ def count_words(text):
 	'''
 	@TODO : Add your Implementation of the feature here! Good Luck :)
 	'''
-	return 0
+	return len(text.split())
