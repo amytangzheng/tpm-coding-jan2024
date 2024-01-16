@@ -12,9 +12,6 @@ You should follow the samples to create the appropriate imports, process the dat
 
 import convokit
 import spacy
-from convokit import Corpus, Speaker, Utterance
-from convokit import download
-from convokit import TextParser
 from convokit import PolitenessStrategies
 
 """
