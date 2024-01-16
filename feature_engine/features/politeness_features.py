@@ -27,7 +27,12 @@ def get_politeness_strategies(text):
      @TODO : Add your Implementation of the feature here! Good Luck :)
      '''
 
+     # creates an instance of PolitenessStrategies
      ps = PolitenessStrategies()
      spacy_nlp = spacy.load('en_core_web_sm', disable=['ner'])
+
+     # transforms the input message
      utt = ps.transform_utterance(text, spacy_nlp=spacy_nlp)
+
+     # returns the politeness strategies metadata
      return utt.meta['politeness_strategies']
